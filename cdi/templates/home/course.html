@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<br>
+<br>
+<br>
+<br>
+<ul class="grid-list">
+    {% for course in coureses %}
+    {% with index=forloop.counter0 %}
+
+    <li>
+      <div class="category-card">
+
+        <div class="card-icon">
+        {% if index == 0 %}
+          <ion-icon name="briefcase-outline"></ion-icon>
+        {% elif index == 1 %}
+          <ion-icon name="file-tray-full"></ion-icon>
+        {% elif index == 2 %}
+          <ion-icon name="color-palette"></ion-icon>
+        {% elif index == 3 %}
+          <ion-icon name="layers"></ion-icon>
+        {% elif index == 4 %}
+          <ion-icon name="laptop"></ion-icon>
+        {% elif index == 5 %}
+          <ion-icon name="thumbs-up"></ion-icon>
+        {% elif index == 6 %}
+          <ion-icon name="headset"></ion-icon>
+        {% elif index == 7 %}
+          <ion-icon name="server"></ion-icon>
+        {% elif index == 8 %}
+          <ion-icon name="medkit"></ion-icon>
+        {% endif %}
+        </div>
+
+        <div>
+          <h3 class="h3 card-title">
+            <a href="{% url 'home:formation_detaile' course.id %}">{{course.title}}</a>
+          </h3>
+          <span class="card-meta">{{course.nbrmatier}} </span>
+        </div>
+
+      </div>
+    </li>
+    {% endwith %}
+    {% endfor %}  
+  </ul>
+  <br>
+<br>
+{% endblock body %}

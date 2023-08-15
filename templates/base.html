@@ -1,0 +1,578 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTI - L'éducation est une question d'excellence académique</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  
+  <link rel="preload" as="image" href="{% static 'assets/images/hero-banner.png' %}">
+  <link rel="preload" as="image" href="{% static 'assets/images/hero-abs-1.png' %}" media="min-width(768px)">
+  <link rel="preload" as="image" href="{% static 'assets/images/hero-abs-2.png' %}" media="min-width(768px)">
+  
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <h1>
+        <a href="#" class="logo">
+          
+    
+            <img src="{% static './assets/images/logo.jpeg' %}" width="70" height="70" loading="lazy" alt="hero image"
+              class="w-1">
+              </a>
+      </h1>
+
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+            <a href="#" class="logo">
+          
+    
+            <img src="{% static './assets/images/logo.jpeg' %}" width="70" height="70" loading="lazy" alt="hero image"
+              class="w-1">
+              </a>
+
+          <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="{% url 'home:home' %}" class="navbar-link" data-nav-toggler data-original-text="Home">Accueil</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="{% url 'home:about' %}" class="navbar-link" data-nav-toggler data-original-text="Apropor">Apropor</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="{% url 'home:course' %}" class="navbar-link" data-nav-toggler data-original-text="Courses">Courses</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="{% url 'home:contact' %}" class="navbar-link" data-original-text="Contactez-nous" data-nav-toggler>Contactez-nous</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-toggler data-original-text="Blog">Blog</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <button class="header-action-btn" aria-label="Open search" data-search-toggler>
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="header-action-btn login-btn">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span" data-original-text="Login / Register">Login / Register</span>
+        </a>
+        <!-- traduction  -->
+        <select id="languageSelect">
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+        </select>
+
+         <!-- ... autres éléments de la barre de navigation ... -->
+  <button class="nav-open-btn" aria-label="Open menu" data-nav-toggler>
+    <ion-icon name="menu-outline"></ion-icon>
+  </button>
+
+      </div>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+  <!-- 
+    - #SEARCH BOX
+  -->
+
+  <div class="search-container" data-search-box>
+    <div class="container">
+
+      <button class="search-close-btn" aria-label="Close search" data-search-toggler>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <div class="search-wrapper">
+        <input type="search" name="search" placeholder="Search Here..." aria-label="Search" class="search-field">
+
+        <button class="search-submit" aria-label="Submit" data-search-toggler>
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  {% block body %}
+
+  {% endblock body %}
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+          
+    
+            <img src="{% static './assets/images/logo.jpeg' %}" width="70" height="70" loading="lazy" alt="hero image"
+              class="w-1">
+              </a>
+
+          <p class="section-text" data-original-text="C'est un fait">C'est un fait établi depuis longtemps qu'un lecteur sera distrait par le contenu lisible d'une page lorsqu'il regarde sa mise en page. L'intérêt d'utiliser.</p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title" data-original-text="Explorer">Explorer</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="À propos de nous">À propos de nous</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="évènements à venir">évènements à venir</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Blogue & actualités">Blogue & actualités</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Foire aux questions">Foire aux questions</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Témoignage">Témoignage</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="politique de confidentialité">politique de confidentialité</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title" data-original-text="Liens utiles">Liens utiles</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Contactez-nous">Contactez-nous</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Forfait tarifaire">Forfait tarifaire</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Profil de l'instructeur">Profil de l'instructeur</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="FAQ">FAQ</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="Cours populaires">Cours populaires</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span" data-original-text="termes et conditions">termes et conditions</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title" data-original-text="Informations de contact">Informations de contact</p>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+            <address class="footer-link" data-original-text="rue Soukouke">
+              275, rue Soukouke , Nouakchott
+            </address>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
+
+            <a href="tel:+13647657839" class="footer-link">+222 41479873</a>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
+
+            <a href="tel:+13647657840" class="footer-link">+222 48659414</a>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+
+            <a href="mailto:contact@eduhome.com" class="footer-link">mbaremedsallemmbare@gmail.com</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+<p class="copyright" data-original-text="Copyright">Copyright 2023 CTI. Tous droits réservés par<a href="#" class="copyright-link">CTI</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+    <ion-icon name="arrow-up"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{% static './assets/js/script.js' %}" defer></script>
+  
+
+<script>
+
+const translatedWords = {
+  'Login / Register': {
+    fr: 'Se connecter / S\'inscrire',
+    ar: 'تسجيل الدخول / التسجيل'
+  },
+  'Home': {
+    fr: 'Accueil',
+    ar: 'الصفحة الرئيسية'
+  },
+  'Apropor': {
+    fr: 'À propos de nous',
+    ar: 'من نحن'
+  },
+  'Courses': {
+    fr: 'Cours',
+    ar: 'الدورات'
+  },
+  'Contactez-nous': {
+    fr: 'Contactez-nous',
+    ar: 'اتصل بنا'
+  },
+  'Blog': {
+    fr: 'Blog',
+    ar: 'المدونة'
+  },
+  'Forfait tarifaire': {
+    fr: 'Forfait tarifaire',
+    ar: 'حزمة التعرفة'
+  },
+  'FAQ': {
+    fr: 'FAQ',
+    ar: 'أسئلة وأجوبة'
+  },
+    'rue Soukouke': {
+    fr: 'rue Soukouke',
+    ar: 'شارع الصكوك، نواكشوط'
+  },
+  'Langage': {
+    fr: 'Langage',
+    ar: 'لغة'
+  },
+  "Liens utiles": {
+    fr: 'Liens utiles',
+    ar: 'روابط مفيدة'
+  },
+  "C'est un fait": {
+    fr: "C'est un fait établi depuis longtemps qu'un lecteur sera distrait par le contenu lisible d'une page lorsqu'il regarde sa mise en page. L'intérêt d'utiliser.",
+    ar: 'لقد تم تثبيت حقيقة منذ فترة طويلة أن القارئ سينشغل بالمحتوى القابل للقراءة على صفحة عندما ينظر إلى تخطيطها. مصلحة استخدام'
+  },
+  'Explorer': {
+    fr: 'Explorer',
+    ar: 'استكشاف'
+  },
+  'À propos de nous': {
+    fr: 'À propos de nous',
+    ar: 'معلومات عنا'
+  },
+  'évènements à venir': {
+    fr: 'évènements à venir',
+    ar: 'الفعاليات القادمة'
+  },
+  'Blogue & actualités': {
+    fr: 'Blogue & actualités',
+    ar: 'المدونة والأخبار'
+  },
+  'Foire aux questions': {
+    fr: 'Foire aux questions',
+    ar: 'أسئلة شائعة'
+  },
+  'Témoignage': {
+    fr: 'Témoignage',
+    ar: 'شهادة'
+  },
+  'politique de confidentialité': {
+    fr: 'politique de confidentialité',
+    ar: 'سياسة الخصوصية'
+  },
+  'Profil de l\'instructeur': {
+    fr: 'Profil de l\'instructeur',
+    ar: 'ملف المدرب'
+  },
+  'FAQ': {
+    fr: 'FAQ',
+    ar: 'أسئلة وأجوبة'
+  },
+  'Cours populaires': {
+    fr: 'Cours populaires',
+    ar: 'الدورات الشائعة'
+  },
+  'termes et conditions': {
+    fr: 'termes et conditions',
+    ar: 'البنود والشروط'
+  },
+  'Informations de contact': {
+    fr: 'Informations de contact',
+    ar: 'معلومات الاتصال'
+  },
+  'Copyright': {
+    fr: 'Copyright 2023 CTI. Tous droits réservés par',
+    ar: 'حقوق الطبع والنشر 2023 CTI. جميع الحقوق محفوظة بواسطة'
+  },
+  // page home 
+  'meilleileur': {
+    fr: 'Meilleur Apprentissage pour l\'Avenir Avec Nous',
+    ar: 'مستقبل تعلم أفضل معنا'
+  },
+  'éducation': {
+    fr: 'L\'éducation est une question d\'excellence académique',
+    ar: 'التعليم هو كل شيء عن التميز الأكاديمي'
+  },
+  'institue': {
+    fr: 'Notre institue,Académique permet au Development de connaissance et la capacite d\'apprentissage.',
+    ar: 'يتيح معهدنا الأكاديمي تطوير المعرفة والقدرة على التعلم.'
+  },
+  'Commencer': {
+    fr: 'Commencer aujourd\'hui',
+    ar: 'إبدأ اليوم'
+  },
+  'Catégories': {
+    fr: 'Catégories de cours',
+    ar: 'فئات الدورة'
+  },
+  'Plant': {
+    fr: 'Notre Plan à apprendre',
+    ar: 'خطتنا للتعلم'
+  },
+  'Base': {
+    fr: 'Base a l\'informatique',
+    ar: 'أساسيات الكمبيوتر'
+  },
+  'QUI NOUS SOMMES': {
+    fr: 'QUI NOUS SOMMES',
+    ar: 'من نحن'
+  },
+  'Nous offrons': {
+    fr: 'Nous offrons le meilleur service d\'education.',
+    ar: 'نحن نقدم أفضل خدمة تعليمية.'
+  },
+  'formation_courses': {
+    fr: 'Formation en python et frameworke base sur python',
+    ar: 'التدريب في Python والإطار على أساس Python'
+  }, 
+  'formation_courses1': {
+    fr: 'Formation en HTML,CSS,JS avec une similation web',
+    ar: 'التدريب على HTML و CSS و JS مع محاكاة الويب'
+  }, 
+  'formation_courses2': {
+    fr: 'Formation en git& git-hub avec deplaymen',
+    ar: 'التدريب في git & git-hub مع Deplayment'
+  }, 
+  
+};
+
+
+    const elementsToTranslate = document.querySelectorAll('[data-original-text]');
+
+    // Vérifier si la préférence de langue est déjà dans le local storage
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      document.getElementById('languageSelect').value = savedLanguage;
+      translatePage(savedLanguage);
+    }
+
+    // Fonction pour traduire la page en fonction de la langue sélectionnée
+    function translatePage(selectedLanguage) {
+      elementsToTranslate.forEach(element => {
+        const originalText = element.getAttribute('data-original-text');
+        if (translatedWords[originalText] && translatedWords[originalText][selectedLanguage]) {
+          element.textContent = translatedWords[originalText][selectedLanguage];
+        }
+      });
+    }
+
+    document.getElementById('languageSelect').addEventListener('change', () => {
+      const selectedLanguage = document.getElementById('languageSelect').value;
+      console.log(localStorage.getItem('selectedLanguage'))
+      // Enregistrer la préférence de langue dans le local storage
+      localStorage.setItem('selectedLanguage', selectedLanguage);
+
+      translatePage(selectedLanguage);
+    });
+
+</script>
+
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

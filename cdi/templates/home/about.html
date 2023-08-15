@@ -1,0 +1,125 @@
+<style>
+    /* Global styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* About section styles */
+    .about-section {
+      padding: 50px 0;
+    }
+
+    .about-image {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-content {
+      padding: 20px;
+    }
+
+    .about-content h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Team section styles */
+    .team-section {
+      padding: 50px 0;
+    }
+
+    .team-member {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .team-member p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<br>
+<br>
+<br>
+
+ <!-- About section -->
+ <section class="about-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="about-image" src="path/to/about-image.jpg" alt="About Us">
+        </div>
+        <div class="col-md-6">
+          <div class="about-content">
+            <h2>About Us</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget quam velit. Integer nec
+              odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh
+              elementum imperdiet.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget quam velit. Integer nec
+              odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="team-member">
+            <img src="{% static './assets/images/bare.jpeg' %}" alt="Team Member 1">
+            <h3>mbare Mohamed Salem</h3>
+            <p>Cinior Fullstack</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="team-member">
+            <img src="path/to/team-member2.jpg" alt="Team Member 2">
+            <h3>Haddemine Sidi Yahya</h3>
+            <p>Doctor IA</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="team-member">
+            <img src="path/to/team-member3.jpg" alt="Team Member 3">
+            <h3>Medos Mbeirik</h3>
+            <p>Developer Expert</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock body %}

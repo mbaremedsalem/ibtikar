@@ -1,0 +1,172 @@
+<style>
+    /* Global styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Form styles */
+.contauct-style1 {
+  padding-top: 50px;
+  padding-bottom: 65px;
+}
+
+.about1-text h1 {
+  font-size: 32px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.text-danger {
+  color: red;
+}
+
+textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+.btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Contact info styles */
+.contact-info-item {
+  padding: 15px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.contact-info span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bg1 {
+  background-color: #1abc9c;
+}
+
+.bg2 {
+  background-color: #e74c3c;
+}
+
+.bg3 {
+  background-color: #3498db;
+}
+
+</style>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+        
+
+                     <!--Form Start-->
+                     <div class="contauct-style1  pt_50 pb_65">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="about1-text mt_30">
+                                        <h1>Get In Touch</h1>
+                                      
+                                    </div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="_token" value="2MmxPwlnlQdujwS0NPyWwdM3QzoHISBEfMCzkmqu">
+                                        <div class="row contact-form">
+                
+                                            <div class="col-lg-6 form-group">
+                                                <label>Subject <span class="text-danger">*</span></label>
+                                                <input type="text"  class="form-control" name="subject">
+                                            </div>
+                                            
+                                            <div class="col-lg-6 form-group">
+                                                <label>Email Address <span class="text-danger">*</span></label>
+                                                <input type="text"  class="form-control" name="email">
+                                            </div>
+                                    
+                                            <div class="col-lg-12 form-group">
+                                                <label>Message <span class="text-danger">*</span></label>
+                                                <textarea name="message" class="form-control" id="massege"></textarea>
+                                            </div>
+                
+                
+                                                                        <div class="col-md-12 form-group">
+                                                <button type="submit" id="recaptcha" class="btn">Send Message</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-5"><br><br><br><br>
+                                    <div class="contact-info-item bg1 mb_30 mt_30">
+                                        <div class="contact-info">
+                                            <span>
+                                                <i class="fas fa-phone"></i> Phone:
+                                            </span>
+                                            <div class="contact-text">
+                                                <p>
+                                                    +22248659414
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="contact-info-item bg2 mb_30">
+                                        <div class="contact-info">
+                                            <span>
+                                                <i class="far fa-envelope"></i> Email:
+                                            </span>
+                                            <div class="contact-text">
+                                                <p>
+                                                    mbaremedsalemmbare@gmail.com
+                                                </p>
+                                            </div>
+                                        </div>
+                                       
+                                    </div><br>
+                                    <div class="contact-info-item bg3 mb_30">
+                                        <div class="contact-info">
+                                            <span>
+                                                <i class="fas fa-map-marker-alt"></i> Address:
+                                            </span>
+                                            <div class="contact-text">
+                                                <p>
+                                                   SOUKOUK
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{% endblock body %}

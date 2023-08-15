@@ -1,0 +1,215 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      .card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        margin: 20px auto;
+      }
+      .card h2 {
+        color: #333333;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: #666666;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      .card a {
+        display: inline-block;
+        background-color: #3498db;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      .card1 {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styles pour le titre de la carte */
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    /* Styles pour le contenu de la carte */
+    .card-content {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Styles pour le champ d'entrée */
+    .input-comment {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* Styles pour le bouton d'envoi */
+    .btn-send {
+      width: 100%;
+      background-color: #022449;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Styles pour le bouton d'envoi lorsqu'il est désactivé */
+    .btn-send:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .progress-indicator {
+    display: none;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    border-top: 3px solid #3498db;
+    animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    /* Add your custom CSS styles here */
+    .alert {
+        display: none;
+        padding: 10px;
+        border: 2px solid green;
+        background-color: #f0f8ff;
+        color: green;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    </style>
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="card">
+    <img src="{{course_detail.image.url}}" alt="Image">
+    <h2>{{course_detail.title}}</h2>
+    <p>{{course_detail.pricenet}} MRU.</p>
+    <div class="card1">
+        <div class="card-title">Laissez un Commentaire</div>
+        <div class="card-content">
+            <form method="POST" id="commentForm" onsubmit="submitForm()">
+                {% csrf_token %}
+                <textarea class="input-comment" rows="4" id="{{ form.comment.id_for_label }}" name="{{ form.comment.name }}" rows="4" placeholder="Enter your comment here">{{ form.comment.value }}</textarea>
+              <button type="submit" class="btn-send">Envoyer</button>
+              <center>
+                <div id="progressIndicator" class="progress-indicator"></div>
+              </center>
+            </form> 
+            <div class="alert" id="successAlert">Comment sent successfully!</div>
+        </div>
+      </div>
+  </div>
+  
+<br>
+<br>
+<br>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
+
+<script>
+    function showProgressIndicator() {
+      var progressIndicator = document.getElementById("progressIndicator");
+      progressIndicator.style.display = "block";
+    }
+  
+    function hideProgressIndicator() {
+      var progressIndicator = document.getElementById("progressIndicator");
+      progressIndicator.style.display = "none";
+    }
+  
+    function clearTextarea() {
+      var inputElement = document.getElementById("{{ form.comment.id_for_label }}");
+      inputElement.value = "";
+    }
+  
+    function showSuccessAlert() {
+      var successAlert = document.getElementById("successAlert");
+      successAlert.style.display = "block";
+    }
+  
+    function hideSuccessAlert() {
+      var successAlert = document.getElementById("successAlert");
+      successAlert.style.display = "none";
+    }
+  
+    function submitForm() {
+      event.preventDefault(); // Prevent the default form submission
+  
+      // Show the progress indicator when the form is submitted
+      showProgressIndicator();
+  
+      // Submit the form data to the server
+      var form = document.getElementById("commentForm");
+      var formData = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-CSRFToken": "{{ csrf_token }}"
+        }
+      })
+      .then(function(response) {
+        // Check if the form submission is successful
+        if (response.ok) {
+          // Hide the progress indicator and show the success alert
+          hideProgressIndicator();
+          showSuccessAlert();
+          // Clear the textarea after showing the success alert
+          clearTextarea();
+          // Hide the success alert after 3 seconds (you can adjust the duration as needed)
+          setTimeout(hideSuccessAlert, 3000);
+        } else {
+          // Handle the case when form submission fails
+          // You can show an error message here if needed
+        }
+      })
+      .catch(function(error) {
+        // Handle any network or server error here
+      });
+    }
+  </script>
+
+{% endblock body %}

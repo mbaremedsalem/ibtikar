@@ -1,0 +1,537 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero" id="home" aria-label="hero" style="background-image: url('./assets/images/hero-bg.jpg')">
+        <div class="container">
+
+          <div class="hero-content">
+            
+
+            <p class="section-subtitle" data-original-text="meilleileur">Meilleur Apprentissage Avenire Avec Nous </p>
+
+            <h2 class="h1 hero-title" data-original-text="éducation">L'éducation est une question d'excellence académique</h2>
+
+            <p class="hero-text" data-original-text="institue">
+              Notre institue,Académique permet au Development de connaissance et la capacite d'apprentissage.
+            </p>
+
+            <a href="#" class="btn btn-primary">
+              <span class="span" data-original-text="Commencer">
+                Commencer aujourd'hui</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+
+          </div>
+
+          <figure class="hero-banner">
+
+            <img src="{% static './assets/images/hero-banner.png' %}" width="500" height="500" loading="lazy" alt="hero image"
+              class="w-100">
+
+            <img src="{% static './assets/images/hero-abs-1.png' %}" width="318" height="352" loading="lazy" aria-hidden="true"
+              class="abs-img abs-img-1">
+
+            <img src="{% static './assets/images/hero-abs-2.png' %}" width="160" height="160" loading="lazy" aria-hidden="true"
+              class="abs-img abs-img-2">
+
+          </figure>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #CATEGORY
+      -->
+
+      <section class="section category" aria-label="category">
+        <div class="container">
+
+          <p class="section-subtitle" data-original-text="Catégories">Catégories de cours</p>
+
+          <h2 class="h2 section-title" data-original-text="Plant">Notre Plant à apprendre</h2>
+
+          <ul class="grid-list">
+            {% for course in coureses %}
+            {% with index=forloop.counter0 %}
+
+            <li>
+              <div class="category-card">
+
+                <div class="card-icon">
+                {% if index == 0 %}
+                  <ion-icon name="briefcase-outline"></ion-icon>
+                {% elif index == 1 %}
+                  <ion-icon name="file-tray-full"></ion-icon>
+                {% elif index == 2 %}
+                  <ion-icon name="color-palette"></ion-icon>
+                {% elif index == 3 %}
+                  <ion-icon name="layers"></ion-icon>
+                {% elif index == 4 %}
+                  <ion-icon name="laptop"></ion-icon>
+                {% elif index == 5 %}
+                  <ion-icon name="thumbs-up"></ion-icon>
+                {% elif index == 6 %}
+                  <ion-icon name="headset"></ion-icon>
+                {% elif index == 7 %}
+                  <ion-icon name="server"></ion-icon>
+                {% elif index == 8 %}
+                  <ion-icon name="medkit"></ion-icon>
+                {% endif %}
+                </div>
+
+                <div>
+                  <h3 class="h3 card-title">
+                    <a href="{% url 'home:formation_detaile' course.id %}">{{course.title}}</a>
+                  </h3>
+                  <span class="card-meta">{{course.nbrmatier}} </span>
+                </div>
+
+              </div>
+            </li>
+            {% endwith %}
+            {% endfor %}  
+
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+
+          <figure class="about-banner">
+
+            <img src="{% static './assets/images/about-banner.jpg' %}" width="450" height="590" loading="lazy" alt="about banner"
+              class="w-100 about-img">
+
+            <img src="{% static './assets/images/about-abs-1.jpg' %}" width="188" height="242" loading="lazy" aria-hidden="true"
+              class="abs-img abs-img-1">
+
+            <img src="{% static './assets/images/about-abs-2.jpg' %}" width="150" height="200" loading="lazy" aria-hidden="true"
+              class="abs-img abs-img-2">
+
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle" data-original-text="QUI NOUS SOMMES">
+              QUI NOUS SOMMES</p>
+
+            <h2 class="h2 section-title" data-original-text="Nous offrons">
+              Nous offrons le meilleur transporteur</h2>
+
+            <ul class="about-list">
+
+              <li class="about-item">
+
+                <div class="item-icon item-icon-1">
+                  <img src="{% static './assets/images/djanogo.webp' %}" width="30" height="30" loading="lazy" aria-hidden="true">
+                </div>
+
+                <div>
+                  <h3 class="h3 item-title">Instructeur expert de django</h3>
+
+                  <p class="item-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna
+                    aliqua.
+                  </p>
+                </div>
+
+              </li>
+
+              <li class="about-item">
+
+                <div class="item-icon item-icon-2">
+                  <img src="{% static './assets/images/flutter.jpg' %}" width="30" height="30" loading="lazy" aria-hidden="true">
+                </div>
+
+                <div>
+                  <h3 class="h3 item-title">Ingeniaire expert flutter </h3>
+
+                  <p class="item-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna
+                    aliqua.
+                  </p>
+                </div>
+
+              </li>
+
+              <li class="about-item">
+
+                <div class="item-icon item-icon-3">
+                  <img src="{% static './assets/images/react.png' %}" width="30" height="30" loading="lazy" aria-hidden="true">
+                </div>
+
+                <div>
+                  <h3 class="h3 item-title">Expeince tres elevee en react</h3>
+
+                  <p class="item-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna
+                    aliqua.
+                  </p>
+                </div>
+
+              </li>
+
+            </ul>
+
+            <a href="{% url 'home:about' %}" class="btn btn-primary">
+              <span class="span">Connaître nous</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #COURSE
+      -->
+
+      <section class="section course" id="courses" aria-label="course"
+        style="background-image: url('./assets/images/course-bg.jpg')">
+        <div class="container">
+
+          <p class="section-subtitle">
+            Nos cours populaires</p>
+
+          <h2 class="h2 section-title">
+            Nos cours populaires</h2>
+
+          <ul class="grid-list">
+            {% for sp_course in sp_coureses %}
+            {% with index=forloop.counter0 %}
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner">
+                  <img src="{{sp_course.image.url}}" width="370" height="270" loading="lazy"
+                    alt="Competitive Strategy law for all students" class="img-cover">
+                </figure>
+
+                <div class="card-actions">
+
+                  <span class="badge">Intermediate</span>
+
+                  <button class="whishlist-btn" aria-label="Add to whishlist" data-whish-btn>
+                    <ion-icon name="heart"></ion-icon>
+                  </button>
+
+                </div>
+
+                <div class="card-content">
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="reader-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="card-meta-text">35 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <time datetime="PT18H15M44S" class="card-meta-text">18h 15m 44s</time>
+                    </li>
+
+                  </ul>
+
+
+
+
+                  {% if index == 0 %}
+                  <h3 class="h3">
+                    <a href="{% url 'home:course_detail' sp_course.id %}" class="card-title" data-original-text="formation_courses">{{sp_course.title}}</a>
+                  </h3>
+                  {% elif index == 1 %}
+                  <h3 class="h3">
+                    <a href="{% url 'home:course_detail' sp_course.id %}" class="card-title" data-original-text="formation_courses1" >{{sp_course.title}}</a>
+                  </h3>
+                  {% elif index == 2 %}
+                  <h3 class="h3">
+                    <a href="{% url 'home:course_detail' sp_course.id %}" class="card-title" data-original-text="formation_courses2" >{{sp_course.title}}</a>
+                  </h3>
+                  {% endif %}
+                  <div class="rating-wrapper">
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <span class="rating-text">(18 Review)</span>
+
+                  </div>
+
+                  <div class="card-footer">
+
+                    <div class="card-price">
+                      <span class="span">{{sp_course.pricenet}}MRU</span>
+
+                      <del class="del">{{sp_course.price}}MRU</del>
+                    </div>
+
+                    <div class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="card-meta-text">47 Students</span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+            {% endwith %}
+            {% endfor %}  
+
+          </ul>
+
+          <a href="{% url 'home:allFormation' %}" class="btn btn-primary">
+            <span class="span">View All Courses</span>
+
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          </a>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #CTA
+      -->
+
+      <section class="section cta" aria-label="workshop" style="background-image: url('./assets/images/cta-bg.png')">
+        <div class="container">
+
+          <figure class="cta-banner">
+            <img src="{% static './assets/images/cta-banner.jpg' %}" width="580" height="380" loading="lazy" alt="cta banner"
+              class="img-cover">
+          </figure>
+
+          <div class="cta-content">
+
+            <p class="section-subtitle">ATELIER GRATUIT</p>
+
+            <h2 class="h2 section-title">Rejoignez nos ateliers gratuits</h2>
+
+            <p class="section-text">
+              Notre societe et le plus proche a vous Notre objective et de vous ganer plus dexpeience avec une vusion plus proche a l'avenire.
+            </p>
+
+            <a href="#" class="btn btn-secondary">
+              <span class="span">Rejoignez</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #EVENT
+      -->
+
+      <section class="section event" id="event" aria-label="event">
+        <div class="container">
+
+          <p class="section-subtitle">
+            ÉVÉNEMENT À VENIR</p>
+
+          <h2 class="h2 section-title">
+            Rejoignons notre communauté</h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="event-card">
+
+                <figure class="card-banner">
+                  <img src="{% static './assets/images/event-1.jpg' %}" width="370" height="250" loading="lazy"
+                    alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
+                </figure>
+
+                <time class="badge" datetime="2022-12-04">04 Dec 2022</time>
+
+                <div class="card-content">
+
+                  <address class="card-address">
+                    <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">Alpaca Way Anaheim, CA 92805</span>
+                  </address>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">
+                      Equipe Innovation & Development Fullstack</a>
+                  </h3>
+
+                  <a href="#" class="btn-link">
+                    <span class="span">Obtenir un billet</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="event-card">
+
+                <figure class="card-banner">
+                  <img src="{% static './assets/images/event-2.jpg' %}" width="370" height="250" loading="lazy"
+                    alt="Virtual Spring Part-time Jobs Fair for Student" class="img-cover">
+                </figure>
+
+                <time class="badge" datetime="2022-10-30">30th Oct 2022</time>
+
+                <div class="card-content">
+
+                  <address class="card-address">
+                    <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">Ritter Avenue Detroit, MI 48226</span>
+                  </address>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Virtual Spring Part-time Jobs Fair for Student</a>
+                  </h3>
+
+                  <a href="#" class="btn-link">
+                    <span class="span">Get Ticket</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="event-card">
+
+                <figure class="card-banner">
+                  <img src="{% static './assets/images/event-3.jpg' %}" width="370" height="250" loading="lazy"
+                    alt="Explorations of Regional Chief Executive Network" class="img-cover">
+                </figure>
+
+                <time class="badge" datetime="2022-09-18">18th Sep 2022</time>
+
+                <div class="card-content">
+
+                  <address class="card-address">
+                    <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">Stout Street York, PA 17401</span>
+                  </address>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Explorations of Regional Chief Executive Network</a>
+                  </h3>
+
+                  <a href="#" class="btn-link">
+                    <span class="span">Get Ticket</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #NEWSLETTER
+      -->
+
+      <section class="section newsletter" aria-label="newsletter"
+        style="background-image: url('./assets/images/newsletter-bg.jpg')">
+        <div class="container">
+
+          <p class="section-subtitle">ABONNEZ-VOUS À LA NEWSLETTER</p>
+
+          <h2 class="h2 section-title">Recevez toutes les dernières nouvelles</h2>
+
+          <form action="" class="newsletter-form">
+
+            <div class="input-wrapper">
+              <input type="email" name="email_address" aria-label="email" placeholder="Enterer vos email address" required
+                class="email-field">
+
+              <ion-icon name="mail-open-outline" aria-hidden="true"></ion-icon>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <span class="span">
+                S'abonner</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </button>
+
+          </form>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+{% endblock body %}

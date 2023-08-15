@@ -1,0 +1,407 @@
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .pagination a {
+      color: #333;
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 0 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .pagination a.active,
+    .pagination a:hover {
+      background-color:#3d65e8;
+      color: #fff;
+      border-color: #3d65e8;
+    }
+
+    .chat-icon {
+  background-color:#3d65e8;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+/* Style général pour le chat */
+#chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+/* Style pour le bouton d'ouverture/fermeture du chat */
+#closeChatButton {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#closeChatButton:hover {
+  color: #333;
+}
+
+/* Style pour le contenu du chat */
+#chatContainer {
+  display: none;
+  position:fixed;
+  bottom: 60px;
+  right: 0;
+  height: 75%;
+  width: 310px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  top: 60px; /* Adjust the top position as needed */
+  z-index: 999; /* Ensure the chat is above other content */
+}
+
+/* Afficher le contenu du chat lorsque ce n'est pas caché */
+#chatContainer:not(.hidden) {
+  display: block;
+}
+
+/* Style pour l'en-tête du chat */
+.chat-header {
+  background-color: #3d65e8;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style pour les messages du chat */
+.chat-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Style pour la zone de saisie du chat */
+.chat-input {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.chat-input button {
+  background-color: #3d65e8;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+.chat-input button:hover {
+  background-color: #3d65e8;
+}
+
+/* Style pour les messages du chat */
+.chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message {
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-between; 
+    padding: 10px ;
+    background-color: #d0f9f2;
+    width: 50%;
+    border-radius: 15px 15px 15px 0px;
+    overflow-wrap: break-word; 
+}
+
+.message-content {
+    margin: 0;
+    font-size: 10px;
+}
+
+.message-date {
+    font-size: 8px;
+    color: #999;
+}
+
+/* Reste du CSS existant */
+.chat-input input[type="text"],
+.chat-input button {
+  height: 40px; /* Ajustez la hauteur selon vos besoins */
+}
+
+</style>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.4.0/css/ionicons.min.css">
+    <style>
+        /* Your CSS styles here */
+    </style>
+{% endblock head %}
+
+{% block body %}
+<br><br><br><br>
+
+<div id="chat-icon">
+    <button id="chatButton" onclick="afficherChat()" class="chat-icon">
+        <center><ion-icon name="chatbubble-ellipses-outline"></ion-icon></center>
+    </button>
+</div>
+
+<div id="chatContainer" class="chat-container">
+    <br>
+    <!-- New chat content -->
+    <div id="chatContent" class="chat-content">
+        <div class="chat-header">
+            <h2>Chat</h2>
+            <button id="closeChatButton" class="close-chat-button">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <!-- Display chat messages here -->
+            
+            <!-- Add more messages here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="my-message" placeholder="Type your message...">
+            <button id="submit"><ion-icon name="send-outline"></ion-icon> </button>
+        </div>
+    </div>
+</div>
+  
+
+<section class="section course" id="courses" aria-label="course"
+style="background-image: url('./assets/images/course-bg.jpg')">
+<div class="container">
+
+  <p class="section-subtitle">
+    Nos cours populaires</p>
+
+  <h2 class="h2 section-title">
+    Nos cours populaires</h2>
+
+  <ul class="grid-list">
+    {% for sp_course in coureses %}
+    <li>
+      <div class="course-card">
+
+        <figure class="card-banner">
+          <img src="{{sp_course.image.url}}" width="370" height="270" loading="lazy"
+            alt="Competitive Strategy law for all students" class="img-cover">
+        </figure>
+
+        <div class="card-actions">
+
+          <span class="badge">Intermediate</span>
+
+          <button class="whishlist-btn" aria-label="Add to whishlist" data-whish-btn>
+            <ion-icon name="heart"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="card-content">
+
+          <ul class="card-meta-list">
+
+            <li class="card-meta-item">
+              <ion-icon name="reader-outline" aria-hidden="true"></ion-icon>
+
+              <span class="card-meta-text">35 Lessons</span>
+            </li>
+
+            <li class="card-meta-item">
+              <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+              <time datetime="PT18H15M44S" class="card-meta-text">18h 15m 44s</time>
+            </li>
+
+          </ul>
+
+          <h3 class="h3">
+            <a href="{% url 'home:course_detail' sp_course.id %}" class="card-title">{{sp_course.title}}</a>
+          </h3>
+
+          <div class="rating-wrapper">
+
+            <div class="rating">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+            </div>
+
+            <span class="rating-text">(18 Review)</span>
+
+          </div>
+
+          <div class="card-footer">
+
+            <div class="card-price">
+              <span class="span">{{sp_course.pricenet}}MRU</span>
+
+              <del class="del">{{sp_course.price}}MRU</del>
+            </div>
+
+            <div class="card-meta-item">
+              <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+              <span class="card-meta-text">47 Students</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </li>
+    {% endfor %}  
+
+  </ul>
+
+  <div class="pagination-area pb-115 text-center">
+    <div class="container">
+    {% if coureses.has_other_pages %}
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="single-wrap d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+
+                            {% if coureses.has_previous %}
+                            <a href="?page=1">&laquo;</a>
+                            <a href="?page={{coureses.previous_page_number}}"><i class="ti-angle-left"></i></a>
+                           {% endif %}
+
+                            {% for i in coureses.paginator.page_range %}
+                                <li>
+                                    <a class="page-link" href="?page={{i}}">{{i}}</a>
+                                </li> 
+                            {% endfor %} 
+
+                            {% if coureses.has_next %}
+                                 
+                            {% if coureses.has_next %}
+                            <a href="?page={{coureses.next_page_number}}"><i class="ti-angle-right"></i></a>
+                            <a href="?page={{coureses.paginator.num_pages}}">&raquo;</a>
+                            {% endif %}
+
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+
+</div>
+</section>
+  <br>
+<br>
+
+<script>
+    function afficherChat() {
+        var chatContainer = document.getElementById("chatContainer");
+        if (chatContainer) {
+            if (chatContainer.style.display === "none") {
+                chatContainer.style.display = "block";
+            } else {
+                chatContainer.style.display = "none";
+            }
+        }
+    }
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        var chatInput = document.getElementById("my-message");
+        var submitButton = document.getElementById("submit");
+
+        // Charger les messages précédemment sauvegardés dans le local storage
+        var savedMessages = localStorage.getItem("chatMessages");
+        if (savedMessages) {
+            var chatMessages = JSON.parse(savedMessages);
+            var chatMessagesContainer = document.querySelector(".chat-messages");
+            chatMessages.forEach(function (message) {
+                var messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.innerHTML = `
+                    <p class="message-content">${message.content}</p>
+                    <span class="message-date">${message.date}</span>
+                `;
+                chatMessagesContainer.appendChild(messageDiv);
+            });
+        }
+
+        submitButton.addEventListener("click", function () {
+            var messageContent = chatInput.value;
+            if (messageContent.trim() !== "") {
+                var currentDate = new Date();
+                var messageDate = currentDate.getHours() + ":" + currentDate.getMinutes();
+                var message = {
+                    content: messageContent,
+                    date: messageDate,
+                };
+
+                var chatMessages = [];
+                var savedMessages = localStorage.getItem("chatMessages");
+                if (savedMessages) {
+                    chatMessages = JSON.parse(savedMessages);
+                }
+                chatMessages.push(message);
+
+                localStorage.setItem("chatMessages", JSON.stringify(chatMessages));
+
+                var chatMessagesContainer = document.querySelector(".chat-messages");
+                var messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.innerHTML = `
+                    <p class="message-content">${messageContent}</p>
+                    <span class="message-date">${messageDate}</span>
+                `;
+                chatMessagesContainer.appendChild(messageDiv);
+
+                chatInput.value = ""; // Effacer le contenu de l'input après l'envoi
+            }
+        });
+    });
+
+</script>
+
+{% endblock body %}
