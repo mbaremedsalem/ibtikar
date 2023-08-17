@@ -19,8 +19,6 @@ def formation_detaile(request,id):
     return render(request,'home/deataille_formation.html',context)
 
 def course_detail(request, id):
-     
-    id = int(hashlib.sha256(hashed_id.encode()).hexdigest(), 16)
     course_detail = Course.objects.get(id=id)
     if request.method == 'POST':
         form = ApplyForm(request.POST)
@@ -33,7 +31,7 @@ def course_detail(request, id):
     else:
         form = ApplyForm()
     context = {'course_detail': course_detail, 'form': form}
-    return render(request, 'home/detaille_course.html', context)
+    return render(request, 'home/detaille_course.html', context) 
 
 #######contact########
 def contact(request):
