@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-
+<style>
+  /* Style pour centrer la boîte de dialogue */
+  .centered-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
 {% block body %}
 
 
@@ -153,7 +161,7 @@
                 </div>
 
                 <div>
-                  <h3 class="h3 item-title">Instructeur expert de django</h3>
+                  <h3 class="h3 item-title"data-original-text="django">Instructeur expert de django</h3>
 
                   <p class="item-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna
@@ -170,7 +178,7 @@
                 </div>
 
                 <div>
-                  <h3 class="h3 item-title">Ingeniaire expert flutter </h3>
+                  <h3 class="h3 item-title" data-original-text="flutter">Ingeniaire expert flutter </h3>
 
                   <p class="item-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna
@@ -187,7 +195,8 @@
                 </div>
 
                 <div>
-                  <h3 class="h3 item-title">Expeince tres elevee en react</h3>
+                  <h3 class="h3 item-title" data-original-text="react" >
+                    Expérience très élevée en React.</h3>
 
                   <p class="item-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna
@@ -200,7 +209,7 @@
             </ul>
 
             <a href="{% url 'home:about' %}" class="btn btn-primary">
-              <span class="span">Connaître nous</span>
+              <span class="span" data-original-text="connaitre">Connaître nous</span>
 
               <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
             </a>
@@ -222,10 +231,10 @@
         style="background-image: url('./assets/images/course-bg.jpg')">
         <div class="container">
 
-          <p class="section-subtitle">
+          <p class="section-subtitle" data-original-text="popularcours">
             Nos cours populaires</p>
 
-          <h2 class="h2 section-title">
+          <h2 class="h2 section-title" data-original-text="popularcours">
             Nos cours populaires</h2>
 
           <ul class="grid-list">
@@ -323,7 +332,7 @@
           </ul>
 
           <a href="{% url 'home:allFormation' %}" class="btn btn-primary">
-            <span class="span">View All Courses</span>
+            <span class="span" data-original-text="AllCourses">View All Courses</span>
 
             <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
           </a>
@@ -349,21 +358,21 @@
 
           <div class="cta-content">
 
-            <p class="section-subtitle">ATELIER GRATUIT</p>
+            <p class="section-subtitle" data-original-text="ATELIERGRATUIT">ATELIER GRATUIT</p>
 
-            <h2 class="h2 section-title">Rejoignez nos ateliers gratuits</h2>
+            <h2 class="h2 section-title" data-original-text="ateliers">Rejoignez nos ateliers gratuits</h2>
 
-            <p class="section-text">
+            <p class="section-text" data-original-text="societe">
               Notre societe et le plus proche a vous Notre objective et de vous ganer plus dexpeience avec une vusion plus proche a l'avenire.
             </p>
 
-            <a href="#" class="btn btn-secondary">
-              <span class="span">Rejoignez</span>
-
+            
+         
+            <a href="#" class="btn btn-secondary" id="openDialog">
+              <span class="span" data-original-text="Rejoignez">Rejoignez</span>
               <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
             </a>
 
-          </div>
 
         </div>
       </section>
@@ -379,10 +388,10 @@
       <section class="section event" id="event" aria-label="event">
         <div class="container">
 
-          <p class="section-subtitle">
+          <p class="section-subtitle" data-original-text="ÉVÉNEMENT À VENIR">
             ÉVÉNEMENT À VENIR</p>
 
-          <h2 class="h2 section-title">
+          <h2 class="h2 section-title" data-original-text="communauté">
             Rejoignons notre communauté</h2>
 
           <ul class="grid-list">
@@ -504,9 +513,9 @@
         style="background-image: url('./assets/images/newsletter-bg.jpg')">
         <div class="container">
 
-          <p class="section-subtitle">ABONNEZ-VOUS À LA NEWSLETTER</p>
+          <p class="section-subtitle" data-original-text="ABONNEZ-VOUS">ABONNEZ-VOUS À LA NEWSLETTER</p>
 
-          <h2 class="h2 section-title">Recevez toutes les dernières nouvelles</h2>
+          <h2 class="h2 section-title" data-original-text="Recevez">Recevez toutes les dernières nouvelles</h2>
 
           <form action="" class="newsletter-form">
 
@@ -518,7 +527,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">
-              <span class="span">
+              <span class="span" data-original-text="Sabonner">
                 S'abonner</span>
 
               <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -533,5 +542,23 @@
   </main>
 
 
+
+
+  <script>
+    document.getElementById("openDialog").addEventListener("click", function() {
+      var userInput = prompt("Veuillez saisir votre nom :");
+      var uderEmail = prompt("Veuillez saisir votre email :");
+      var uderphone  = prompt("Veuillez saisir votre numero du telepjone :");
+
+      if (userInput !== null && uderEmail!==null && uderphone!==null) {
+        localStorage.setItem('userInput', userInput);
+        localStorage.setItem('uderEmail', uderEmail);
+        localStorage.setItem('uderphone', uderphone);
+
+        var message = "Bonjour " + userInput + "!vos de mande a ete envoyer avec succes on vas vous contactez bien tot.";
+        alert(message);
+      }
+    });
+    </script>
 
 {% endblock body %}

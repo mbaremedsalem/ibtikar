@@ -1,3 +1,4 @@
+import hashlib
 from django.shortcuts import redirect, render
 from .models import Formation,Course
 from .form import ApplyForm
@@ -18,6 +19,8 @@ def formation_detaile(request,id):
     return render(request,'home/deataille_formation.html',context)
 
 def course_detail(request, id):
+     
+    id = int(hashlib.sha256(hashed_id.encode()).hexdigest(), 16)
     course_detail = Course.objects.get(id=id)
     if request.method == 'POST':
         form = ApplyForm(request.POST)

@@ -532,7 +532,67 @@ const translatedWords = {
     fr: 'Formation en git& git-hub avec deplaymen',
     ar: 'التدريب في git & git-hub مع Deplayment'
   }, 
-  
+  'django': {
+    fr: 'Instructeur expert de django back-end',
+    ar: 'مدرب خبير django'
+  }, 
+  'flutter': {
+    fr: 'Ingeniaire expert flutter ',
+    ar: 'مدرب خبير flutter'
+  }, 
+  'react': {
+    fr: 'Expérience très élevée en React.',
+    ar: 'خبرة عالية جدًا في React.'
+  }, 
+  'connaitre': {
+    fr: 'Connaître nous',
+    ar: 'من نحن'
+  },
+  'popularcours': {
+    fr: 'Nos cours populaires',
+    ar: 'دوراتنا الشعبية'
+  },
+  'AllCourses': {
+    fr: 'Afficher tous les cours',
+    ar: 'عرض جميع الدورات'
+  }, 
+  'ATELIERGRATUIT': {
+    fr: 'ATELIER GRATUIT',
+    ar: 'ورشة عمل مجانية'
+  },
+  'ateliers': {
+    fr: 'Rejoignez nos ateliers gratuits',
+    ar: 'انضم إلى ورش العمل المجانية لدينا'
+  },
+  'societe': {
+    fr: 'Notre societe et le plus proche a vous Notre objective et de vous ganer plus dexpeience avec une vusion plus proche a l\'avenire.',
+    ar: 'شركتنا هي الأقرب إليك هدفنا هو اكتساب المزيد من الخبرة برؤية أقرب في المستقبل.'
+  },
+  'Rejoignez': {
+    fr: 'Rejoignez',
+    ar: 'ينضم'
+  },
+  'ÉVÉNEMENT À VENIR': {
+    fr: 'ÉVÉNEMENT À VENIR',
+    ar: 'حدث في المستقبل'
+  },
+  'communauté': {
+    fr: 'Rejoignons notre communauté',
+    ar: 'انضم إلى مجتمعنا'
+  },
+  'ABONNEZ-VOUS': {
+    fr: 'ABONNEZ-VOUS À LA NEWSLETTER',
+    ar: 'اشترك في النشرة الإخبارية'
+  },
+  'Recevez': {
+    fr: 'Recevez toutes les dernières nouvelles',
+    ar: 'احصل على آخر الأخبار'
+  },
+  'Sabonner': {
+    fr: 'S\'abonner',
+    ar: 'اشترك'
+  },
+
 };
 
 
@@ -557,7 +617,6 @@ const translatedWords = {
 
     document.getElementById('languageSelect').addEventListener('change', () => {
       const selectedLanguage = document.getElementById('languageSelect').value;
-      console.log(localStorage.getItem('selectedLanguage'))
       // Enregistrer la préférence de langue dans le local storage
       localStorage.setItem('selectedLanguage', selectedLanguage);
 
